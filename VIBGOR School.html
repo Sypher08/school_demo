@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VIBGOR School</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--navy:#0f2a4a;--navy2:#1b3d66;--gold:#e0a82e;--paper:#f6f8fb;--ink:#1d2733;--mute:#5d6b7c;--line:#dde4ec;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#0c1522;--ink:#e8eef5;--mute:#98a8bb;--line:#24364c;--card:#13233a;--navy:#0a1c33}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:'Nunito Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:Merriweather,Georgia,serif;line-height:1.25;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Merriweather,serif;font-weight:700;color:var(--navy);text-decoration:none;font-size:20px}
+@media(prefers-color-scheme:dark){.logo{color:#fff}}
+nav{display:flex;gap:22px;align-items:center;font-weight:600;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--gold);color:#1b1500;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700}
+.btn.dark{background:var(--navy);color:#fff}.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{background:linear-gradient(180deg,#e9eff7,var(--paper));padding:56px 0 90px;position:relative;overflow:hidden}
+@media(prefers-color-scheme:dark){.hero{background:#0f1f35}}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(30px,4.4vw,46px);color:var(--navy)}
+@media(prefers-color-scheme:dark){.hero h1{color:#fff}}
+.hero p{max-width:46ch;color:var(--mute);font-size:18px;margin:16px 0 26px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.wave{position:absolute;bottom:-1px;left:0;width:100%;height:60px}
+.wave path{fill:var(--paper)}
+section{padding:64px 0}
+.tag{color:var(--navy2);font-weight:700;font-size:15px;margin-bottom:6px}
+@media(prefers-color-scheme:dark){.tag{color:var(--gold)}}
+h2{font-size:clamp(24px,3vw,32px);margin-bottom:28px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.course{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;border-bottom:5px solid var(--line);transition:.2s}
+.course:nth-child(1){background:var(--navy);color:#fff;border-color:var(--navy)}
+.course h3{font-size:22px;margin-bottom:4px}.course small{color:var(--gold);font-weight:700}
+.course:not(:nth-child(1)) small{color:var(--navy2)}
+@media(prefers-color-scheme:dark){.course:not(:nth-child(1)) small{color:var(--gold)}}
+.course p{font-size:15px;margin:10px 0 0;opacity:.85}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about p{color:var(--mute)}
+.pills{display:grid;gap:14px}
+.pill{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:40px;padding:10px 22px 10px 10px;font-weight:700;transform:rotate(-1.5deg)}
+.pill:nth-child(even){transform:rotate(1deg);margin-left:28px}
+.pill i{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-family:Merriweather,serif}
+.tabs{background:var(--navy);color:#fff;border-radius:22px;padding:40px}
+.tabs h2{color:#fff;margin-bottom:18px}
+.tabbar{display:inline-flex;background:rgba(255,255,255,.1);border-radius:10px;padding:4px;margin-bottom:24px}
+.tabbar button{border:0;background:none;color:#fff;font:inherit;font-weight:700;padding:9px 20px;border-radius:7px;cursor:pointer}
+.tabbar button[aria-selected=true]{background:var(--gold);color:#1b1500}
+.panel{display:none;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.panel.on{display:grid}
+.panel div{background:rgba(255,255,255,.08);border-radius:12px;padding:18px}
+.panel b{display:block;color:var(--gold);margin-bottom:4px}
+.panel span{font-size:15px;opacity:.9}
+.board{display:grid;grid-template-columns:1.2fr 1fr;gap:28px}
+.notice{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px}
+.notice div{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.notice div:last-child{border:0}
+.date{min-width:54px;text-align:center;background:var(--paper);border-radius:8px;padding:6px;font-weight:700;line-height:1.2}
+.date small{display:block;font-weight:600;color:var(--mute)}
+form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:grid;gap:12px}
+label{font-size:14px;font-weight:700}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--paper);color:var(--ink);margin-top:4px}
+#ok{display:none;color:#1f7a4d;font-weight:700}
+footer{background:var(--navy);color:#cbd6e4;padding:36px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+@media(max-width:760px){.hero .wrap,.about,.board{grid-template-columns:1fr}nav a:not(.btn){display:none}.tabs{padding:24px}}
+</style></head><body>
+<header><div class="wrap">
+<a class="logo" href="#top"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4 2 12l15 8 15-8z" fill="#0f2a4a"/><path d="M9 16v6c0 2 4 4 8 4s8-2 8-4v-6l-8 4z" fill="#e0a82e"/></svg>VIBGOR</a>
+<nav><a href="#classes">Classes</a><a href="#about">About</a><a href="#families">Students &amp; Parents</a><a href="#notices">Notices</a><a class="btn dark" href="#admission">Apply</a></nav>
+</div></header>
+<main id="top">
+<div class="hero"><div class="wrap">
+<div><h1>Where every child is known by name and taught to think.</h1>
+<p>VIBGOR School offers classes from Nursery to Grade 12 with small sections, teachers who stay in touch with parents, and room for sport, art and science.</p>
+<div class="row"><a class="btn" href="#admission">Admissions 2027–28</a><a class="btn dark" href="#classes">See classes</a></div></div>
+<svg viewBox="0 0 360 330" role="img" aria-label="Stack of books with a graduation cap">
+<ellipse cx="190" cy="300" rx="150" ry="20" fill="#0f2a4a" opacity=".12"/>
+<rect x="50" y="230" width="270" height="52" rx="4" fill="#b3342f"/><rect x="62" y="238" width="246" height="36" fill="#f5ecd6"/>
+<rect x="75" y="180" width="240" height="50" rx="4" fill="#1b5e9c"/><rect x="87" y="188" width="216" height="34" fill="#f5ecd6"/>
+<rect x="60" y="132" width="250" height="48" rx="4" fill="#2f6b4d"/><rect x="72" y="140" width="226" height="32" fill="#f5ecd6"/>
+<rect x="85" y="86" width="230" height="46" rx="4" fill="#d98a1e"/><rect x="97" y="94" width="206" height="30" fill="#f5ecd6"/>
+<path d="M200 20 70 62l130 40 130-40z" fill="#26323f"/><path d="M130 82v26c0 10 32 18 70 18s70-8 70-18V82l-70 22z" fill="#1c2631"/>
+<path d="M320 60v50" stroke="#e0a82e" stroke-width="4"/><circle cx="320" cy="116" r="7" fill="#e0a82e"/></svg>
+</div>
+<svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 30C200 70 400 0 600 25S1000 60 1200 20V60H0z"/></svg></div>
+
+<section id="classes"><div class="wrap">
+<div class="tag">Classes</div><h2>One school, four stages</h2>
+<div class="grid4">
+<div class="course"><small>Nursery – UKG</small><h3>Early Years</h3><p>Play-based learning, stories, early numbers and plenty of outdoor time.</p></div>
+<div class="course"><small>Grades 1 – 5</small><h3>Primary</h3><p>Strong reading, writing and maths, with weekly activity periods.</p></div>
+<div class="course"><small>Grades 6 – 8</small><h3>Middle</h3><p>Labs begin, projects grow, and students learn to manage their own work.</p></div>
+<div class="course"><small>Grades 9 – 12</small><h3>Secondary</h3><p>CBSE board exam preparation with career guidance and mentoring.</p></div>
+</div></div></section>
+
+<section id="about" style="background:var(--card)"><div class="wrap about">
+<div><div class="tag">About VIBGOR</div><h2>A school that works with parents, not around them</h2>
+<p>We keep sections small so teachers can notice who is struggling and who is ready for more. Parents get progress updates every month, not just at result time.</p>
+<p>VIBGOR is a CBSE-affiliated school in Pune (dummy affiliation no. 1130000). Our campus has science and computer labs, a library, a playground and a quiet room for students who need a break.</p></div>
+<div class="pills"><div class="pill"><i>T</i>Qualified, caring teachers</div><div class="pill"><i>S</i>Small class sizes</div><div class="pill"><i>L</i>Labs and library</div><div class="pill"><i>B</i>Safe school transport</div></div>
+</div></section>
+
+<section id="families"><div class="wrap"><div class="tabs">
+<h2>Everything in one place</h2>
+<div class="tabbar" role="tablist"><button role="tab" aria-selected="true" data-t="s">I’m a student</button><button role="tab" aria-selected="false" data-t="p">I’m a parent</button></div>
+<div class="panel on" id="s"><div><b>Timetable</b><span>See today’s periods and homework.</span></div><div><b>Clubs</b><span>Cricket, kabaddi, robotics, debate, art, music.</span></div><div><b>Library</b><span>Find books and reserve them for next day.</span></div></div>
+<div class="panel" id="p"><div><b>Fee schedule</b><span>Pay by term via UPI or net banking; e-receipts. Sample: ₹18,000 per term.</span></div><div><b>Meet a teacher</b><span>Book a ten-minute slot after school.</span></div><div><b>Progress reports</b><span>Monthly notes and term marksheets.</span></div></div>
+</div></div></section>
+
+<section id="notices" style="padding-top:0"><div class="wrap board">
+<div><div class="tag">Notice board</div><h2>What’s coming up</h2>
+<div class="notice">
+<div><span class="date">12<small>Dec</small></span><span><b>Parent–teacher meeting</b><br>Grades 1–8, 9:00 am to 1:00 pm.</span></div>
+<div><span class="date">20<small>Dec</small></span><span><b>Annual Day celebration</b><br>Cultural programme in the school auditorium, 5:00 pm.</span></div>
+<div><span class="date">26<small>Jan</small></span><span><b>Republic Day</b><br>Flag hoisting at 8:00 am, followed by a march-past.</span></div>
+</div></div>
+<div id="admission"><div class="tag">Admissions</div><h2>Ask us about a seat</h2>
+<form id="f"><label>Parent’s name<input required name="n" autocomplete="name"></label>
+<label>Phone<input required type="tel" name="p" autocomplete="tel"></label>
+<label>Class applying for<select><option>Nursery – UKG</option><option>Grades 1 – 5</option><option>Grades 6 – 8</option><option>Grades 9 – 12</option></select></label>
+<button class="btn" type="submit">Request a call back</button><div id="ok" role="status">Thank you. The office will call you within two working days.</div></form></div>
+</div></section>
+</main>
+<footer><div class="wrap"><div><b style="color:#fff">VIBGOR School</b><br>VIBGOR School, Pune, Maharashtra · Office 8:00 am – 3:00 pm</div><div>dummy@gmail.com<br>+919874563210</div></div></footer>
+<script>
+document.querySelectorAll('.tabbar button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabbar button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===b.dataset.t))});
+document.getElementById('f').onsubmit=e=>{e.preventDefault();document.getElementById('ok').style.display='block';e.target.reset()};
+</script></body></html>
